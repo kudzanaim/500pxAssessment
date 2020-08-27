@@ -10,7 +10,7 @@ export const SINGLEPHOTO = "SINGLEPHOTO";
 // Get Home Data Functions:
 export function getphotos(filter, page) {
     return async function(dispatch){
-        const results = await axios.get(`https://five100px-gcsusetqgq-uc.a.run.app/popular/${filter}/${page}`).then(response => response).catch(error => error);
+        const results = await axios.get(`https://five100-gcsusetqgq-uc.a.run.app/popular/${filter}/${page}`).then(response => response).catch(error => error);
         
         document.querySelector('html').scrollTop = 0;
 
@@ -27,7 +27,7 @@ export function getphotos(filter, page) {
 
 export function getSinglePhoto(id) {
     return async function(dispatch){
-        const photo = await axios.get(`https://five100px-gcsusetqgq-uc.a.run.app/photo/${id}`).then(response => response).catch(error => error);
+        const photo = await axios.get(`https://five100-gcsusetqgq-uc.a.run.app/photo/${id}`).then(response => response).catch(error => error);
         
         return dispatch({
             type: SINGLEPHOTO,
