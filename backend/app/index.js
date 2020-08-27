@@ -17,6 +17,9 @@ const CKEY = process.env.CUSTOMER_KEY;
 // URL Generator
 const URL = (PARAMS)=>`https://api.500px.com/v1/photos${PARAMS}`;
 
+// Filters
+const validFilters = ['popular','highest_rated','upcoming' ,'editors','fresh_today','fresh_yesterday','fresh_today','fresh_week' ];
+
 
 // Routes:
 app.get('/', async(req,res)=>{
@@ -25,7 +28,13 @@ app.get('/', async(req,res)=>{
         <div style="width:100%; padding-top:150px; text-align:center">
             <h1 style="font-size:60px">Welcome to my 500px API</h1>
             <br/> 
-            <p style="font-size: 20px;font-family: monospace;">Use '/popular' for photo GETS.</p>
+            <p style="font-size: 20px;font-family: monospace;">Use the following routes to access data:</p>
+            <ul style="text-align: left;margin: 0 auto;width: fit-content;font-family: monospace; color: #d01919; line-height: 20px; font-weight: bold;">
+                <li>/popular/:feature_filter/:page_number</li>
+                <li>/photo/:photo_id</li>
+            </ul>
+            <p style="font-size: 20px;font-family: monospace;">Valid filters include:</p>
+            <p style="font-size: 15px;font-family: monospace; opacity:0.8">${validFilters}</p>
         </div>
     `)
 });
@@ -38,7 +47,6 @@ app.get('/photo/:id', async(req,res)=>{
 
 app.get('/popular/:filter/:page', async(req,res)=>{
     const {filter, page} = req.params;
-    const validFilters = ['popular','highest_rated','upcoming' ,'editors','fresh_today','fresh_yesterday','fresh_today','fresh_week' ];
     const ifFilterIsValid = validFilters.includes(filter);
 
     if(ifFilterIsValid){
