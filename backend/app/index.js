@@ -76,7 +76,7 @@ app.listen(process.env.PORT || 5555, (err) => {
 });
 
 
-// Handle 404 - Keep this as a last route:
+// Handle 404:
 app.use(function(req, res) {
     res.status(404).send(`
         <div style="width:100%; padding-top:150px; text-align:center">
